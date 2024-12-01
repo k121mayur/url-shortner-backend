@@ -27,10 +27,10 @@ app.get("/:hash", (req, res) => {
     console.log(hash)
     const item = data.find(item => item.hash === hash)
     if (item) {
-        res.redirect(item.original_url)
+        res.json(item.original_url)
         return
     }
-    res.send("This is url shortner. Send POST request to /shortner with your full url")
+    res.send("Not found check your hash")
 })
 
 app.post("/shortner", (req, res) => {
@@ -50,4 +50,6 @@ app.post("/shortner", (req, res) => {
 
 })
 
-app.listen(5000, () => console.log("server is running"))
+app.listen(5000, () => {
+    console.log("Server is running on port 5000")
+})
